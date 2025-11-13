@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tournow — Book or Contact</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+</head>
+<body class="theme-dark">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header role="banner" class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Tournow</a>
+      <nav role="navigation" aria-label="Primary" class="primary-nav">
+        <ul class="nav-list">
+          <li><a href="../">Home</a></li>
+          <li><a href="data.html">Destinations</a></li>
+          <li><a href="form.html" aria-current="page">Book / Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1" role="main">
+    <article class="container">
+      <h1>Contact & Booking</h1>
+      <p class="lead">Use this form to request a quote or ask questions about accessibility and itineraries.</p>
+
+      <!-- aria-live region for dynamic feedback -->
+      <div id="form-feedback" class="visually-hidden" aria-live="polite"></div>
+
+      <form class="booking-form" action="#" method="post" novalidate>
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required>
+          <small class="helper">Enter the name for the booking.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" required aria-describedby="email-help">
+          <small id="email-help" class="helper">We'll use this to contact you.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="dest">Desired destination</label>
+          <select id="dest" name="destination" required>
+            <option value="">Select a destination</option>
+            <option>Lakeview National Park</option>
+            <option>Coastal Village</option>
+            <option>Historic Town</option>
+            <option>Mountain Retreat</option>
+            <option>Wanyama Safari Lodge</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your trip goals..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Send request</button>
+          <button type="reset" class="btn">Reset</button>
+        </div>
+      </form>
+    </article>
+  </main>
+
+  <footer role="contentinfo" class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Tournow — Explore Responsibly</p>
+    </div>
+  </footer>
+
+  <script src="../js/a11y.js"></script>
+
+  <!-- Inline accessibility validation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('.booking-form');
+      const feedback = document.getElementById('form-feedback');
+
+      if (form && feedback) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          if (form.checkValidity()) {
+            feedback.textContent = "Form submitted successfully. We'll be in touch soon!";
+            feedback.classList.remove('error-text');
+            feedback.classList.add('helper');
+          } else {
+            feedback.textContent = "Please correct the highlighted fields before submitting.";
+            feedback.classList.remove('helper');
+            feedback.classList.add('error-text');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

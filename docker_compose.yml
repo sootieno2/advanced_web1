@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  tournow:
+    container_name: tournow-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+    networks:
+      - tournow-net
+
+networks:
+  tournow-net:
+    driver: bridge
