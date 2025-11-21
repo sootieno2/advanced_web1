@@ -1,0 +1,24 @@
+> advanced-web@1.0.0 test
+> jest --coverage
+
+ PASS  tests/format.test.js
+  ✓ shortText truncates long strings with ellipsis (3 ms)
+  ✓ shortText returns empty string for non-strings
+
+ PASS  tests/reducers.test.js
+  ✓ toursReducer handles TOURS_FETCH_SUCCESS (1 ms)
+  ✓ bookingReducer updates form
+
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   100%  |    100%  |   100%  |   100%  |                   
+ src/utils/format.js         |   100%  |    100%  |   100%  |   100%  |                   
+ src/store/reducers.js       |   100%  |    100%  |   100%  |   100%  |                   
+-----------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 2 passed, 2 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        0.97 s
+Ran all test suites.

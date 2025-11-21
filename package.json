@@ -1,0 +1,16 @@
+{
+  "name": "advanced-web",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "serve public -p 3000",
+    "test": "jest --coverage",
+    "graph": "madge --image evidence/module-graph.svg src/",
+    "sourcetree": "tree -a -I node_modules > evidence/source-tree.txt"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "madge": "^6.1.0",
+    "serve": "^14.2.5"
+  }
+}
