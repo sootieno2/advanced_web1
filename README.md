@@ -47,3 +47,57 @@ npm install -g serve
 serve public
 This serves index.html at http://localhost:3000
 
+
+Developments 2
+
+# Upload 2 – Modules & State Architecture
+
+This submission extends the Upload 1 foundation with a full modular JavaScript architecture, including a state store, routing system, domain models, and core UI logic.
+
+---
+
+##  Deliverables
+
+### 1. Module Structure
+All JavaScript functionality is now organized inside the `src/` folder:
+
+- `router/` – hash-based router
+- `store/` – Redux-style store + pure reducers
+- `modules/` – domain models, factories, services
+- `ui/components/` – reusable UI pieces
+- `ui/views/` – page-level rendering functions
+- `utils/` – pure utility functions
+
+### 2. Class / Factory Design
+- `TourModel.js` defines a Tour class
+- `BookingFactory.js` produces new booking objects
+- Actions and service logic separated into modules
+
+### 3. State Store
+A lightweight Redux-inspired store implements:
+- `getState()`
+- `dispatch()`
+- `subscribe()`
+- Pure reducers controlling state transitions
+
+### 4. Routing (Hash Routing)
+A minimal router based on `location.hash`:
+- `#/` → Home
+- `#/data` → Destinations
+- `#/form` → Booking page
+
+Works with static hosting, Docker, GitHub Pages.
+
+### 5. Core UI Logic
+Views dynamically render content into the app container:
+- Home, Destinations, and Form views
+- Card and Form components
+- Integrated with store and router
+
+---
+
+##  Evidence
+
+### 1. Source Tree
+The full folder structure has been exported to evidence 
+

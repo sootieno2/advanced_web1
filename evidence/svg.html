@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" style="background:#ffffff">
+  <defs>
+    <style>
+      .box { fill:#fff; stroke:#111; stroke-width:2; rx:6; ry:6; }
+      .title { font: bold 18px sans-serif; fill:#000; }
+      .label { font: 14px sans-serif; fill:#000; }
+      .small { font: 12px sans-serif; fill:#000; }
+      .arrow { stroke:#111; stroke-width:2; fill:none; marker-end:url(#arrowhead); }
+      .thin { stroke:#111; stroke-width:1.5; fill:none; marker-end:url(#arrowhead); }
+      .shadow { filter: url(#dropShadow); }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 z" fill="#111" />
+    </marker>
+
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="3" dy="3" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Left column: src/app.js and mount -->
+  <g transform="translate(40,20)">
+    <rect class="box" x="0" y="0" width="220" height="120"/>
+    <text class="title" x="14" y="28">src/app.js</text>
+    <text class="small" x="14" y="52">imports:</text>
+    <text class="small" x="24" y="70">• store/index.js</text>
+    <text class="small" x="24" y="86">• router/index.js</text>
+    <text class="small" x="24" y="102">• ui/views/*</text>
+  </g>
+
+  <g transform="translate(40,160)">
+    <rect class="box" x="0" y="0" width="160" height="50"/>
+    <text class="small" x="12" y="28">mount</text>
+    <text class="small" x="12" y="44">document.getElementById('app')</text>
+  </g>
+
+  <!-- Middle column: store and router -->
+  <g transform="translate(320,10)">
+    <rect class="box" x="0" y="0" width="200" height="70"/>
+    <text class="title" x="12" y="28">store/index.js</text>
+    <text class="small" x="12" y="48">default export: store</text>
+  </g>
+
+  <g transform="translate(320,110)">
+    <rect class="box" x="0" y="0" width="260" height="120"/>
+    <text class="title" x="12" y="28">router/index.js</text>
+    <text class="small" x="12" y="52">registerRoute()</text>
+    <text class="small" x="12" y="72">startRouter()</text>
+  </g>
+
+  <!-- Right column: Views -->
+  <g transform="translate(700,10)">
+    <rect class="box" x="0" y="0" width="220" height="70"/>
+    <text class="title" x="12" y="28">HomeView</text>
+    <text class="small" x="12" y="48">render(mount)</text>
+  </g>
+
+  <g transform="translate(700,110)">
+    <rect class="box" x="0" y="0" width="220" height="70"/>
+    <text class="title" x="12" y="28">DataView</text>
+    <text class="small" x="12" y="48">render(mount)</text>
+  </g>
+
+  <g transform="translate(700,210)">
+    <rect class="box" x="0" y="0" width="220" height="80"/>
+    <text class="title" x="12" y="28">FormView</text>
+    <text class="small" x="12" y="48">render(mount, { store })</text>
+  </g>
+
+  <!-- Arrows from src/app.js to store and router and views -->
+  <!-- from src/app.js to store -->
+  <path class="arrow" d="M260,45 L320,45" />
+
+  <!-- from src/app.js to router -->
+  <path class="arrow" d="M260,90 L320,160" />
+
+  <!-- from src/app.js to views (direct) -->
+  <path class="thin" d="M240,70 L700,40" />
+  <path class="thin" d="M240,70 L700,130" />
+  <path class="thin" d="M240,70 L700,240" />
+
+  <!-- from router to views -->
+  <path class="arrow" d="M580,150 L700,40" />
+  <path class="arrow" d="M580,160 L700,130" />
+  <path class="arrow" d="M580,200 L700,240" />
+
+  <!-- from store to HomeView (diagonal) -->
+  <path class="arrow" d="M520,40 L700,40" />
+
+  <!-- from mount (left bottom) to nothing (visual) -->
+  <path class="thin" d="M160,200 L240,200" />
+
+  <!-- small labels on arrows optionally -->
+  <text class="small" x="350" y="40">imports ➜</text>
+
+  <!-- framing title -->
+  <text class="title" x="20" y="14">Module graph - src/app.js</text>
+</svg>

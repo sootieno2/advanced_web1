@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "serve public -p 3000",
-    "test": "jest --coverage",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
     "graph": "madge --image evidence/module-graph.svg src/",
     "sourcetree": "tree -a -I node_modules > evidence/source-tree.txt"
   },
