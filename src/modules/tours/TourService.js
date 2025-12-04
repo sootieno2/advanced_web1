@@ -1,14 +1,26 @@
- // src/modules/tours/TourService.js
-import Tour from './Tourmodel.js';
+// src/modules/tours/TourService.js
+import Tour from "./Tourmodel.js";
 
-const MOCK = [
-  { id: '1', title: 'Safari Sunrise', description: 'See wildlife at dawn...', image: '/img/flamingos.png' },
-  { id: '2', title: 'Coastal Trails', description: 'Walk serene beaches...', image: '/img/nyali.png' },
-  { id: '3', title: 'Cultural Nights', description: 'Taste local cuisine...', image: '/img/site1.png' }
-];
+const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 export async function fetchTours() {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(MOCK.map(m => new Tour(m))), 150);
-  });
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error(`Server error (${response.status})`);
+
+    const json = await response.json();
+
+    const tours = json.slice(0, 6).map(item =>
+      new Tour({
+        id: item.id,
+        title: item.title,
+        description: item.body,
+        image: "/img/placeholder-tour.png"
+      })
+    );
+
+    return { status: "success", data: tours };
+  } catch (err) {
+    return { status: "error", message: err.message || "Network error" };
+  }
 }
